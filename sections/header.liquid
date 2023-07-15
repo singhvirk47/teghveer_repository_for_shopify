@@ -1,3 +1,4 @@
+
 {% assign main_menu_linklist = linklists[section.settings.menu].links %}
 
 <div class="relative bg-white" x-data="{ mobileMenuOpen: false }" >
@@ -16,7 +17,7 @@
 
             <!-- NAVIGATION MENU -->
             <nav class="hidden md:flex space-x-10">
-                {% for link in main_menu_linklist %}
+                {% for link in linklists.main-menu.links %}
                 {% if link.links != blank %}
                   {% assign link_handle = link.handle | replace: '-', '_' %}
                    <div x-data="{ {{ link_handle }}: false }" class="relative">
@@ -81,7 +82,7 @@
                         <!-- MOBILE MENU HEADER TITLE PLUS CLOSE BUTTON -->
                         <div class="flex items-center justify-between pb-3">
                             <div>
-                                <h1 class="text-lg text-gray-500">{{ section.settings.mobile_menu_title }}</h1>
+                                <h1 class="text-lg text-gray-500">{{ shop.name }}</h1>
                             </div>
                             <div class="-mr-2">
                                 <button x-on:click="mobileMenuOpen = false" type="button" class="bg-white rounded-md p-2 text-gray-500">
@@ -94,7 +95,7 @@
                         <div class="pt-3">
                             <nav class="grid gap-y-7">
                                 
-                                    {% for link in main_menu_linklist %}
+                                    {% for link in linklists.main-menu.links %}
                                       {% assign link_handle = link.handle | replace: '-','_' %}
                                        {% if link.links != blank %}
                                             <div x-data="{ {{ link_handle }}: false }" class="relative">
@@ -133,4 +134,5 @@
                 </div>
             </div>
 </div>
+
 
